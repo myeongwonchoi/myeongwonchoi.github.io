@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>결혼 초대장</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Nanum+Myeongjo:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="js/jquery-3.6.0.min.js"></script>
+  <script src="js/main.js"></script>
+</head>
+<body>
+  <section id="title">
+    <img src="images/title.jpg" alt="title">
+    <div class="introText">
+      <div class="container">
+        <h2>김지훈<br> 한예지</h2>
+        <p>2021년 8월 7일<br>토요일 낮 12시 30분<br>김포 웨딩홀 2층 행복실</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="invitation">
+    <div class="container">
+      <h2>초대합니다</h2>
+      <p>인생에 빛나는 별이 되어준 사람과<br>
+        평생을 함께하려 합니다.<br>
+        서로의 인생에 빛나는 별이 되어<br>
+        평생을 반짝이며 사랑하기로 약속했습니다.
+      </p>
+      <p>
+        저희 새로운 시작의 자리에<br>
+        소중한 분들을 모십니다.<br>
+        따뜻한 격려와 발걸음에 보답하며<br>
+        별처럼 아름답게 살아가겠습니다.
+      </p>
+      <ul class="guestInfo">
+        <li><span>김갑수 안혜숙의 장남</span> 김지훈</li>
+        <li><span>한기범 이은주의 차녀</span> 한예지</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="call">
+    <div class="banner">
+      <p>소중한 시간을 함께 하고 싶습니다.</p>
+    </div>
+    <ul class="phone">
+      <li>
+        <a href="tel:010-123-0000">
+          <img src="images/malePhoneIcon.png" alt="신랑에게 전화하기">
+        </a>
+        <p>신랑에게 전화하기</p>
+      </li>
+      <li>
+        <a href="tel:010-123-0000">
+          <img src="images/femalePhoneIcon.png" alt="신부에게 전화하기">
+        </a>
+        <p>신부에게 전화하기</p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="gallery">
+    <div class="container">
+      <h2>갤러리</h2>
+      <figure>
+        <img src="images/photo01.jpg" alt="대표이미지">
+      </figure>
+      <ul class="galleryList">
+        <li>
+          <a href="#">
+            <img src="images/photo01.jpg" alt="1">
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="images/photo02.jpg" alt="2">
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="images/photo03.jpg" alt="3">
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="images/photo04.jpg" alt="4">
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="images/photo05.jpg" alt="5">
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="images/photo06.jpg" alt="6">
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="video">
+    <h2>영상</h2>
+    <div class="video">
+      <iframe width="100%" height="100%" src="https://www.youtube.com/embed/DR7VYfpomDo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <p>행복하게 잘 살겠습니다.</p>
+  </section>
+
+  <section id="location">
+    <h2>오시는 길</h2>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1579.9123534943985!2d126.70087557465106!3d37.629810933353504!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357c841b1756078d%3A0x5bfaf1bd667bc638!2z6rmA7Y-s7Luo67Kk7IWY7Juo65Sp7ZmA67aA7Y6Y!5e0!3m2!1sko!2skr!4v1627606915268!5m2!1sko!2skr" style="border:0;height:37.5vh;width:100%;" allowfullscreen="" loading="lazy"></iframe>
+    <div class="container">
+      <ul class="appLink">
+        <li>
+          <a 
+            href="https://apis.openapi.sk.com/tmap/app/routes?appKey=l7xx20401a447f994002b83f0e74e5482a2d&name=김포웨딩부페&lon=127.00517884800654&lat=37.555954592538384"
+          >
+            <img src="images/tmap-icon.png" alt="티맵">
+          </a>
+        </li>
+        <li>
+          <a href="#" onclick="kakao_navi();">
+            <img src="images/kakao-navi-icon.png" alt="카카오네비">
+          </a>
+        </li>
+        <li>
+          <a 
+            href="https://map.naver.com/v5/directions/-/14104572.341122683,4527405.362539465,%EA%B9%80%ED%8F%AC%EC%BB%A8%EB%B2%A4%EC%85%98%EC%9B%A8%EB%94%A9%ED%99%80%EC%9E%85%EA%B5%AC,21714169,PLACE_POI/-/transit?c=14104586.2003993,4527416.7761639,17,0,0,0,dh"
+            target="_blank"
+          >
+            <img src="images/naver-map-icon.png" alt="네이버지도">
+          </a>
+        </li>
+        <li>
+          <a 
+            href="https://map.kakao.com/?urlX=434483&urlY=1147553&urlLevel=3&itemId=8240125&q=%EA%B9%80%ED%8F%AC%EC%9B%A8%EB%94%A9%ED%99%80%EB%B6%80%ED%8E%98&srcid=8240125&map_type=TYPE_MAP"
+            target="_blank"
+          >
+            <img src="images/kakao-map-icon.png" alt="카카오맵">
+          </a>
+        </li>
+      </ul>
+
+      <dl class="transfer">
+        <dt>지하철:</dt>
+        <dd>지하철 김포골드라인 김포시청 1번 출구</dd>
+        <dt>버스:</dt>
+        <dd>간선버스: 30, 200, 300</dd>
+        <dd>지선버스: 3100</dd>
+        <dd>마을버스: 06</dd>
+        <dt>주차안내:</dt>
+        <dd>김포웨딩홀 내 지하 주자창</dd>
+      </dl>
+    </div>
+  </section>
+
+  <footer>
+    <a href="tel:031-980-0011">031-980-0011</a>
+    <p class="address">경기도 김포시 김포1동 123<br>
+      <b>김포웨딩홀</b></p>
+  </footer>
+
+    <!-- kakao API 추가 -->
+    <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+
+    <script>
+      var is_pc = '1'
+      // 이 키는 테스트용입니다. 
+      // var app_key = '13da3914377346b0b8f74f5309b49dad';
+      var app_key = 'a2a623bfdc4dde17b428dcc303d2d52e';
+
+      Kakao.init(app_key);
+
+      // 모바일 카카오네비 앱 실행
+      function kakao_navi() {
+        if (is_pc == '1') {
+          alert('모바일 기기 전용 기능입니다')
+        }
+        // 김포웨딩홀: 37.63051488108245, 126.70317468513564
+        Kakao.Navi.start({
+          name: '김포웨딩홀', // 목적지
+          x: 126.70317468513564,  // 위도
+          y: 37.63051488108245,  // 경도
+          coordType: 'wgs84'
+        });
+        return false;
+      }
+    </script>
+</body>
+</html>
