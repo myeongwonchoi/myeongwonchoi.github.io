@@ -21,13 +21,13 @@ body {
   /* font-family: 'Nanum Myeongjo', serif; */
   color: #444;
   font-size: 16px;
-  background-color: #E9DFBC;
+  background-color: #fff;
   max-width: 500px;
   margin: 0 auto;
 }
 
 section {
-  background-color: #E9DFBC;
+  background-color: #fff;
 }
 
 section h2 {
@@ -36,7 +36,7 @@ section h2 {
 }
 
 #title, #call, #gallery, #video, #location {
-  background-color: #E9DFBC;
+  background-color: #fff;
 }
   
 #title img {
@@ -84,7 +84,7 @@ section h2 {
 }
 
 #invitation .container {
-  background: #E9DFBC;
+  background: #fff;
   border-radius: 20px;
   font-family: 'Nanum Myeongjo', serif;
   padding-top: 40px;
@@ -253,7 +253,7 @@ section h2 {
 
 footer {
   background: #444;
-  color: #E9DFBC;
+  color: #fff;
   text-align: center;
   font-size: 14px;
   padding-top: 30px;
@@ -263,7 +263,7 @@ footer {
 footer a {
   font-size: 20px;
   text-decoration: none;
-  color: #E9DFBC;
+  color: #fff;
   margin-bottom: 10px;
   display: block;
 }
