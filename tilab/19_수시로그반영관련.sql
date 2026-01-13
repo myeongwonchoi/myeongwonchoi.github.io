@@ -1,9 +1,9 @@
 /***********************************************************************
-	- Á¦     ¸ñ: 19_¼ö½Ã·Î±×¹Ý¿µ°ü·Ã
-	- ÃÖÃÊÀÛ¼ºÀÏ: 2025-04-30
-	- ÃÖÃÊÀÛ¼ºÀÚ: ÃÖ¸í¿ø
-	- ÃÖÁ¾¼öÁ¤ÀÏ: 2025-05-04
-	- ÃÖÁ¾ÀÛ¼ºÀÚ: ÃÖ¸í¿ø
+	- ì œ     ëª©: 19_ìˆ˜ì‹œë¡œê·¸ë°˜ì˜ê´€ë ¨
+	- ìµœì´ˆìž‘ì„±ì¼: 2025-04-30
+	- ìµœì´ˆìž‘ì„±ìž: ìµœëª…ì›
+	- ìµœì¢…ìˆ˜ì •ì¼: 2025-05-04
+	- ìµœì¢…ìž‘ì„±ìž: ìµœëª…ì›
 ************************************************************************/
 
 USE POI_MAIN_PRACT
@@ -13,12 +13,9 @@ FROM vPOI_I_COMMON_ALL_GRS A, PTC_POI_CLASS B, PTC_CLASS C, PTN_ADDR D, POI_MAIN
 WHERE A.POI_ID = B.POI_ID AND B.CLASS_CODE = C.CLASS_CODE AND A.POI_ID = D.POI_ID AND LEFT(A.TILE_ID,4) = E.MAP_ID
 and a.poi_id in
 (
-select *
-from PTN_WORK_COMMENT
-where COMMENT LIKE '%¼ö½Ã%'
-and INSERT_DATE >= '2025-04-28 15:09:46.073' and user_name in ('ÃÖ¸í¿ø','ÀÌÁ¦Èñ')
+SELECT *
+FROM PTN_WORK_COMMENT
+WHERE COMMENT LIKE '%ìˆ˜ì‹œ%'
+AND INSERT_DATE >= '2025-04-28 15:09:46.073' 
+AND USER_NAME IN ()
 )
-
-/*
-»èÁ¦´ë»óÀº ¸î °Ç ¾øÀ¸´Ï±î ÄÚÄÚ³Ó Åø¿¡¼­ ±×³É Ã£¾ÆÁÖÀÚ
-*/
