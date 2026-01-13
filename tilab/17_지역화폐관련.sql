@@ -1,92 +1,94 @@
 /***********************************************************************
-	- Á¦     ¸ñ: 17_Áö¿ªÈ­Æó°ü·Ã
-	- ÃÖÃÊÀÛ¼ºÀÏ: 2025-02-19
-	- ÃÖÃÊÀÛ¼ºÀÚ: ÃÖ¸í¿ø
-	- ÃÖÁ¾¼öÁ¤ÀÏ: 2025-04-01
-	- ÃÖÁ¾ÀÛ¼ºÀÚ: ÃÖ¸í¿ø
+	- ì œ     ëª©: 17_ì§€ì—­í™”íê´€ë ¨
+	- ìµœì´ˆìž‘ì„±ì¼: 2025-02-19
+	- ìµœì´ˆìž‘ì„±ìž: ìµœëª…ì›
+	- ìµœì¢…ìˆ˜ì •ì¼: 2025-04-01
+	- ìµœì¢…ìž‘ì„±ìž: ìµœëª…ì›
 ************************************************************************/
 
 
 /*
-¿øº» ³¯¸®¸é ÀÎ»ý ³¡³ª´Ï±î º¹»ç¸¦ ÇÏÀÚ
+ì›ë³¸ ë‚ ë¦¬ë©´ ì¸ìƒ ëë‚˜ë‹ˆê¹Œ ë³µì‚¬ë¥¼ í•˜ìž
 */
-SELECT * INTO Áö¿ªÈ­Æó_250218_origin_backup FROM Áö¿ªÈ­Æó_250218
-SELECT * INTO POI¸ÅÄª±âÁØ_250218_MATCHING FROM POI¸ÅÄª±âÁØ_250218
+SELECT * INTO ì§€ì—­í™”í_250218_origin_backup FROM ì§€ì—­í™”í_250218
+SELECT * INTO POIë§¤ì¹­ê¸°ì¤€_250218_MATCHING FROM POIë§¤ì¹­ê¸°ì¤€_250218
 
 /*
-¸ÅÄªÀÌ µÇ¾ú´Ù¸é UPDATE Äõ¸®¸¦ ÀÌ¿ëÇØ¼­ ¹Ý¿µÀ» ÇØº¸ÀÚ
+ë§¤ì¹­ì´ ë˜ì—ˆë‹¤ë©´ UPDATE ì¿¼ë¦¬ë¥¼ ì´ìš©í•´ì„œ ë°˜ì˜ì„ í•´ë³´ìž
 */
-SELECT m.¸ÅÄªPOI_ID, p.poi_id, m.[³»¿ª(½Å±Ô/¼öÁ¤/»èÁ¦)], m.»ó¼¼³»¿ª,
-m.id, m.»óÈ£¸í, p.fname, p.cname, m.addr, p.addr, m.san, p.san_bun, m.jibun_m, p.primary_bun, m.jibun_s, p.secondary_bun
--- update m set m.¸ÅÄªpoi_id = p.poi_id, m.[³»¿ª(½Å±Ô/¼öÁ¤/»èÁ¦)] = 'È®ÀÎ', m.»ó¼¼³»¿ª='ÁÖ¼Ò¹×¸íÄªÀÏÄ¡(Æ¯¼ö¹®ÀÚÁ¦¿Ü´ë»ó)'
--- update m set m.¸ÅÄªpoi_id = p.poi_id, m.[³»¿ª(½Å±Ô/¼öÁ¤/»èÁ¦)] = '¼öÁ¤', m.»ó¼¼³»¿ª='secondary_bunºÒÀÏÄ¡(Æ¯¼ö¹®ÀÚÁ¦¿Ü´ë»ó)'
--- update m set m.¸ÅÄªpoi_id = p.poi_id, m.[³»¿ª(½Å±Ô/¼öÁ¤/»èÁ¦)] = '¼öÁ¤', m.»ó¼¼³»¿ª='primary_bunºÒÀÏÄ¡(Æ¯¼ö¹®ÀÚÁ¦¿Ü´ë»ó)'
--- update m set m.¸ÅÄªpoi_id = p.poi_id, m.[³»¿ª(½Å±Ô/¼öÁ¤/»èÁ¦)] = '¼öÁ¤', m.»ó¼¼³»¿ª='san_bunºÒÀÏÄ¡(Æ¯¼ö¹®ÀÚÁ¦¿Ü´ë»ó)'
--- update m set m.¸ÅÄªpoi_id = p.poi_id, m.[³»¿ª(½Å±Ô/¼öÁ¤/»èÁ¦)] = '¼öÁ¤', m.»ó¼¼³»¿ª='Áö¹øºÒÀÏÄ¡(Æ¯¼ö¹®ÀÚÁ¦¿Ü´ë»ó)'
-FROM cp_tilab_new.dbo.Áö¿ªÈ­Æó_250218_MATCHING m
-JOIN cp_tilab_new.dbo.POI¸ÅÄª±âÁØ_250218_MATCHING p
-ON -- REPLACE(REPLACE(ISNULL(m.»óÈ£¸í_2, ''), ' ', ''), '/', '') = REPLACE(REPLACE(ISNULL(p.fname, '') + ISNULL(p.cname, ''), ' ', ''), '/', '')  -- »óÈ£¸í ºñ±³
+SELECT m.ë§¤ì¹­POI_ID, p.poi_id, m.[ë‚´ì—­(ì‹ ê·œ/ìˆ˜ì •/ì‚­ì œ)], m.ìƒì„¸ë‚´ì—­,
+m.id, m.ìƒí˜¸ëª…, p.fname, p.cname, m.addr, p.addr, m.san, p.san_bun, m.jibun_m, p.primary_bun, m.jibun_s, p.secondary_bun
+-- update m set m.ë§¤ì¹­poi_id = p.poi_id, m.[ë‚´ì—­(ì‹ ê·œ/ìˆ˜ì •/ì‚­ì œ)] = 'í™•ì¸', m.ìƒì„¸ë‚´ì—­='ì£¼ì†Œë°ëª…ì¹­ì¼ì¹˜(íŠ¹ìˆ˜ë¬¸ìžì œì™¸ëŒ€ìƒ)'
+-- update m set m.ë§¤ì¹­poi_id = p.poi_id, m.[ë‚´ì—­(ì‹ ê·œ/ìˆ˜ì •/ì‚­ì œ)] = 'ìˆ˜ì •', m.ìƒì„¸ë‚´ì—­='secondary_bunë¶ˆì¼ì¹˜(íŠ¹ìˆ˜ë¬¸ìžì œì™¸ëŒ€ìƒ)'
+-- update m set m.ë§¤ì¹­poi_id = p.poi_id, m.[ë‚´ì—­(ì‹ ê·œ/ìˆ˜ì •/ì‚­ì œ)] = 'ìˆ˜ì •', m.ìƒì„¸ë‚´ì—­='primary_bunë¶ˆì¼ì¹˜(íŠ¹ìˆ˜ë¬¸ìžì œì™¸ëŒ€ìƒ)'
+-- update m set m.ë§¤ì¹­poi_id = p.poi_id, m.[ë‚´ì—­(ì‹ ê·œ/ìˆ˜ì •/ì‚­ì œ)] = 'ìˆ˜ì •', m.ìƒì„¸ë‚´ì—­='san_bunë¶ˆì¼ì¹˜(íŠ¹ìˆ˜ë¬¸ìžì œì™¸ëŒ€ìƒ)'
+-- update m set m.ë§¤ì¹­poi_id = p.poi_id, m.[ë‚´ì—­(ì‹ ê·œ/ìˆ˜ì •/ì‚­ì œ)] = 'ìˆ˜ì •', m.ìƒì„¸ë‚´ì—­='ì§€ë²ˆë¶ˆì¼ì¹˜(íŠ¹ìˆ˜ë¬¸ìžì œì™¸ëŒ€ìƒ)'
+FROM cp_tilab_new.dbo.ì§€ì—­í™”í_250218_MATCHING m
+JOIN cp_tilab_new.dbo.POIë§¤ì¹­ê¸°ì¤€_250218_MATCHING p
+ON -- REPLACE(REPLACE(ISNULL(m.ìƒí˜¸ëª…_2, ''), ' ', ''), '/', '') = REPLACE(REPLACE(ISNULL(p.fname, '') + ISNULL(p.cname, ''), ' ', ''), '/', '')  -- ìƒí˜¸ëª… ë¹„êµ
 -- AND 
-REPLACE(ISNULL(m.addr, ''), ' ', '') = REPLACE(ISNULL(p.addr, ''), ' ', '')  -- addr ºñ±³
- AND REPLACE(ISNULL(m.san, ''), ' ', '') = REPLACE(ISNULL(p.san_bun, ''), ' ', '')  -- san°ú san_bun ºñ±³
- AND REPLACE(ISNULL(m.jibun_m, ''), ' ', '') = REPLACE(ISNULL(p.primary_bun, ''), ' ', '')  -- jibun_m°ú primary_bun ºñ±³
- AND REPLACE(ISNULL(m.jibun_s, ''), ' ', '') = REPLACE(ISNULL(p.secondary_bun, ''), ' ', '')  -- jibun_s¿Í secondary_bun ºñ±³
-AND m.¸ÅÄªPOI_ID is null
+REPLACE(ISNULL(m.addr, ''), ' ', '') = REPLACE(ISNULL(p.addr, ''), ' ', '')  -- addr ë¹„êµ
+AND REPLACE(ISNULL(m.san, ''), ' ', '') = REPLACE(ISNULL(p.san_bun, ''), ' ', '')  -- sanê³¼ san_bun ë¹„êµ
+AND REPLACE(ISNULL(m.jibun_m, ''), ' ', '') = REPLACE(ISNULL(p.primary_bun, ''), ' ', '')  -- jibun_mê³¼ primary_bun ë¹„êµ
+AND REPLACE(ISNULL(m.jibun_s, ''), ' ', '') = REPLACE(ISNULL(p.secondary_bun, ''), ' ', '')  -- jibun_sì™€ secondary_bun ë¹„êµ
+AND m.ë§¤ì¹­POI_ID is null
 
 /*
-¸ÅÄªÀÌ ¾ÈµÈ ´ë»óÀ» ¾Ë¾Æº¸ÀÚ
+ë§¤ì¹­ì´ ì•ˆëœ ëŒ€ìƒì„ ì•Œì•„ë³´ìž
 */
-select * from Áö¿ªÈ­Æó_250218_MATCHING
-where ¸ÅÄªPOI_ID IS null
+SELECT *
+FROM ì§€ì—­í™”í_250218_MATCHING
+WHERE ë§¤ì¹­POI_ID IS NULL
 
 /*
-¸ÅÄªÀÌ ¾ÈµÈ ´ë»óÀ» ¾Ë¾Æº¸ÀÚ
+ë§¤ì¹­ì´ ì•ˆëœ ëŒ€ìƒì„ ì•Œì•„ë³´ìž
 */
-select * FROM POI¸ÅÄª±âÁØ_250218_MATCHING
+SELECT *
+FROM POIë§¤ì¹­ê¸°ì¤€_250218_MATCHING
 WHERE POI_ID NOT IN 
 (
-select ¸ÅÄªPOI_ID 
-from Áö¿ªÈ­Æó_250218_MATCHING
-where ¸ÅÄªPOI_ID is not null
+SELECT ë§¤ì¹­POI_ID 
+FROM ì§€ì—­í™”í_250218_MATCHING
+WHERE ë§¤ì¹­POI_ID IS NOT NULL
 )
 
 /* 
-»óÈ£¸í_2 ¶ó´Â ÄÃ·³À» Ãß°¡ÇØ¼­ ¸íÄª Á¦°Å¸¦ ¸¶À½´ë·Î ÇØº¸ÀÚ
+ìƒí˜¸ëª…_2 ë¼ëŠ” ì»¬ëŸ¼ì„ ì¶”ê°€í•´ì„œ ëª…ì¹­ ì œê±°ë¥¼ ë§ˆìŒëŒ€ë¡œ í•´ë³´ìž
 */
-ALTER TABLE Áö¿ªÈ­Æó_250218_MATCHING ADD »óÈ£¸í_2 NVARCHAR(255);
-UPDATE Áö¿ªÈ­Æó_250218_MATCHING SET »óÈ£¸í_2 = »óÈ£¸í;
-select * from Áö¿ªÈ­Æó_250218_MATCHING where ¸ÅÄªPOI_ID is null
+ALTER TABLE ì§€ì—­í™”í_250218_MATCHING ADD ìƒí˜¸ëª…_2 NVARCHAR(255);
+UPDATE ì§€ì—­í™”í_250218_MATCHING SET ìƒí˜¸ëª…_2 = ìƒí˜¸ëª…;
+select * from ì§€ì—­í™”í_250218_MATCHING where ë§¤ì¹­POI_ID is null
 
 /*
-Ã¹ ¹øÂ° °ýÈ£ ¹× °ýÈ£ ¾ÈÀÇ ³»¿ëÀ» Á¦°ÅÇÏ´Â Äõ¸®
+ì²« ë²ˆì§¸ ê´„í˜¸ ë° ê´„í˜¸ ì•ˆì˜ ë‚´ìš©ì„ ì œê±°í•˜ëŠ” ì¿¼ë¦¬
 */
-UPDATE cp_tilab_new.dbo.Áö¿ªÈ­Æó_250218_MATCHING
-SET »óÈ£¸í_2 = 
+UPDATE cp_tilab_new.dbo.ì§€ì—­í™”í_250218_MATCHING
+SET ìƒí˜¸ëª…_2 = 
     CASE
-        WHEN PATINDEX('%(%', »óÈ£¸í_2) > 0 AND PATINDEX('%)%', »óÈ£¸í_2) > 0 
+        WHEN PATINDEX('%(%', ìƒí˜¸ëª…_2) > 0 AND PATINDEX('%)%', ìƒí˜¸ëª…_2) > 0 
         THEN REPLACE(
-                 SUBSTRING(»óÈ£¸í_2, 1, PATINDEX('%(%', »óÈ£¸í_2) - 1) + 
-                 SUBSTRING(»óÈ£¸í_2, PATINDEX('%)%', »óÈ£¸í_2) + 1, LEN(»óÈ£¸í_2)),
-                 ' ', '')  -- °ýÈ£ ¾ÈÀÇ ³»¿ë Á¦°Å ÈÄ °ø¹éµµ Á¦°Å
-        ELSE »óÈ£¸í_2
+                 SUBSTRING(ìƒí˜¸ëª…_2, 1, PATINDEX('%(%', ìƒí˜¸ëª…_2) - 1) + 
+                 SUBSTRING(ìƒí˜¸ëª…_2, PATINDEX('%)%', ìƒí˜¸ëª…_2) + 1, LEN(ìƒí˜¸ëª…_2)),
+                 ' ', '')  -- ê´„í˜¸ ì•ˆì˜ ë‚´ìš© ì œê±° í›„ ê³µë°±ë„ ì œê±°
+        ELSE ìƒí˜¸ëª…_2
     END;
 
 
 /*
-Áö¿ªÈ­Æó¿Í poi¸ÅÄª±âÁØ Å×ÀÌºíÀÇ ÁÖ¼Ò¸¦ ºñ±³ÇÏ¿© Áö¿ªÈ­Æó Å×ÀÌºíÀÌ °®°í ÀÖ´Â ÁÖ¼Ò¸¸À»  poi¸ÅÄª±âÁØ Å×ÀÌºí DB¿¡¼­ ´Ù ÃßÃâÇØº¸ÀÚ.
-±×·¡¼­ ´õ °£´ÜÇÑ Å×ÀÌºí·Î¸¸ ¾²±â À§ÇØ POI¸ÅÄª±âÁØ_250218_MATCHING_2¸¦ ¸¸µéÀÚ.
+ì§€ì—­í™”íì™€ poië§¤ì¹­ê¸°ì¤€ í…Œì´ë¸”ì˜ ì£¼ì†Œë¥¼ ë¹„êµí•˜ì—¬ ì§€ì—­í™”í í…Œì´ë¸”ì´ ê°–ê³  ìžˆëŠ” ì£¼ì†Œë§Œì„  poië§¤ì¹­ê¸°ì¤€ í…Œì´ë¸” DBì—ì„œ ë‹¤ ì¶”ì¶œí•´ë³´ìž.
+ê·¸ëž˜ì„œ ë” ê°„ë‹¨í•œ í…Œì´ë¸”ë¡œë§Œ ì“°ê¸° ìœ„í•´ POIë§¤ì¹­ê¸°ì¤€_250218_MATCHING_2ë¥¼ ë§Œë“¤ìž.
 */
 
-SELECT * INTO POI¸ÅÄª±âÁØ_250218_MATCHING_2 FROM POI¸ÅÄª±âÁØ_250218_MATCHING WHERE 1 = 0
+SELECT * INTO POIë§¤ì¹­ê¸°ì¤€_250218_MATCHING_2 FROM POIë§¤ì¹­ê¸°ì¤€_250218_MATCHING WHERE 1 = 0
 
-INSERT INTO POI¸ÅÄª±âÁØ_250218_MATCHING_2
+INSERT INTO POIë§¤ì¹­ê¸°ì¤€_250218_MATCHING_2
 SELECT p.*
-FROM cp_tilab_new.dbo.POI¸ÅÄª±âÁØ_250218_MATCHING p
+FROM cp_tilab_new.dbo.POIë§¤ì¹­ê¸°ì¤€_250218_MATCHING p
 WHERE EXISTS (
     SELECT 1
-    FROM cp_tilab_new.dbo.Áö¿ªÈ­Æó_250218_MATCHING m
+    FROM cp_tilab_new.dbo.ì§€ì—­í™”í_250218_MATCHING m
     WHERE 
-        -- °¢ ÄÃ·³À» varchar·Î º¯È¯ÇÏ¿© ºñ±³
+        -- ê° ì»¬ëŸ¼ì„ varcharë¡œ ë³€í™˜í•˜ì—¬ ë¹„êµ
         REPLACE(REPLACE(REPLACE(REPLACE(CAST(ISNULL(m.addr, '') AS VARCHAR(255)) + '_' + 
                                           CAST(ISNULL(m.san, '') AS VARCHAR(255)) + '_' + 
                                           CAST(ISNULL(m.jibun_m, '') AS VARCHAR(255)) + '_' + 
@@ -97,10 +99,11 @@ WHERE EXISTS (
                                           CAST(ISNULL(p.secondary_bun, '') AS VARCHAR(255)), ' ', ''), '/', ''), '(', ''), ')', '')
 );
 
-SELECT * FROM POI¸ÅÄª±âÁØ_250218_MATCHING_2
+SELECT * FROM POIë§¤ì¹­ê¸°ì¤€_250218_MATCHING_2
 WHERE POI_ID NOT IN
 (
-SELECT ¸ÅÄªPOI_ID
-FROM Áö¿ªÈ­Æó_250218_MATCHING
-WHERE ¸ÅÄªPOI_ID IS NOT NULL
+SELECT ë§¤ì¹­POI_ID
+FROM ì§€ì—­í™”í_250218_MATCHING
+WHERE ë§¤ì¹­POI_ID IS NOT NULL
+
 )
