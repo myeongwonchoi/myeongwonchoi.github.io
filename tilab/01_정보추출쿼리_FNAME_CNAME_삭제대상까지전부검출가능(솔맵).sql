@@ -1,12 +1,12 @@
 /***********************************************************************
-	- Á¦     ¸ñ: 01_Á¤º¸ÃßÃâÄõ¸®_FNAME_CNAME_»èÁ¦´ë»ó±îÁöÀüºÎ°ËÃâ°¡´É
-	- ÃÖÃÊÀÛ¼ºÀÏ: 2024-07-09
-	- ÃÖÃÊÀÛ¼ºÀÚ: ÃÖ¸í¿ø
-	- ÃÖÁ¾¼öÁ¤ÀÏ: 2025-07-18
-	- ÃÖÁ¾ÀÛ¼ºÀÚ: ÃÖ¸í¿ø
+	- ì œ     ëª©: 01_ì •ë³´ì¶”ì¶œì¿¼ë¦¬_FNAME_CNAME_ì‚­ì œëŒ€ìƒê¹Œì§€ì „ë¶€ê²€ì¶œê°€ëŠ¥
+	- ìµœì´ˆìž‘ì„±ì¼: 2024-07-09
+	- ìµœì´ˆìž‘ì„±ìž: ìµœëª…ì›
+	- ìµœì¢…ìˆ˜ì •ì¼: 2025-07-18
+	- ìµœì¢…ìž‘ì„±ìž: ìµœëª…ì›
 ************************************************************************/
 
--- FNAME °ËÃâ // ERR_CODE ¿©ºÎ¿Í »ó°ü¾øÀÌ °ËÃâ °¡´É
+-- FNAME ê²€ì¶œ // ERR_CODE ì—¬ë¶€ì™€ ìƒê´€ì—†ì´ ê²€ì¶œ ê°€ëŠ¥
 SELECT A.POI_ID, F.N_NAME AS FNAME, C.CA_NAME, C.CB_NAME, C.CC_NAME, C.CD_NAME, D.ADDRESS, D.SAN, D.JIBUN_M, D.JIBUN_S
 FROM PTM_COMMON A, PTC_POI_CLASS B, PTC_CLASS C, PTN_ADDR D, PTD_NAME E, PTN_NAME F
 WHERE A.POI_ID = B.POI_ID
@@ -20,7 +20,7 @@ AND A.POI_ID IN
 
 )
 
--- CNAME °ËÃâ // ERR_CODE ¿©ºÎ¿Í »ó°ü¾øÀÌ °ËÃâ °¡´É
+-- CNAME ê²€ì¶œ // ERR_CODE ì—¬ë¶€ì™€ ìƒê´€ì—†ì´ ê²€ì¶œ ê°€ëŠ¥
 SELECT A.POI_ID, F.N_NAME AS CNAME, C.CA_NAME, C.CB_NAME, C.CC_NAME, C.CD_NAME, D.ADDRESS, D.SAN, D.JIBUN_M, D.JIBUN_S
 FROM PTM_COMMON A, PTC_POI_CLASS B, PTC_CLASS C, PTN_ADDR D, PTD_NAME E, PTN_NAME F
 WHERE A.POI_ID = B.POI_ID
@@ -34,19 +34,19 @@ AND A.POI_ID IN
 
 )
 
--- ÁÂÇ¥¸¦ ¿øÇÏ´Â °æ¿ì // GRS ±âÁØ Áß½ÉÁÂÇ¥ ÃßÃâ , »èÁ¦´ë»óÀº °ËÃâµÇÁö ¾ÊÀ½
+-- ì¢Œí‘œë¥¼ ì›í•˜ëŠ” ê²½ìš° // GRS ê¸°ì¤€ ì¤‘ì‹¬ì¢Œí‘œ ì¶”ì¶œ , ì‚­ì œëŒ€ìƒì€ ê²€ì¶œë˜ì§€ ì•ŠìŒ
 USE POI_MAIN_PRACT
 
 SELECT E.MAP_ID, A.POI_ID, A.FNAME, A.CNAME, B.CLASS_CODE, C.CA_NAME, C.CB_NAME, C.CC_NAME, C.CD_NAME, F.LON, F.LAT
 FROM vPOI_I_COMMON_ALL_GRS A, PTC_POI_CLASS B, PTC_CLASS C, PTN_ADDR D, POI_MAIN_ETC..[22y_2150_INDEX_220401] E, vobn_PTN_POI_XY_GRS F
 WHERE A.POI_ID = B.POI_ID AND B.CLASS_CODE = C.CLASS_CODE AND A.POI_ID = D.POI_ID AND A.POI_ID = F.POI_ID
 AND LEFT(A.TILE_ID,4) = E.MAP_ID
-AND E.°üÇÒ¾÷Ã¼ = 'Æ¼¾ÆÀÌ·¦'
+AND E.ê´€í• ì—…ì²´ = 'í‹°ì•„ì´ëž©'
 AND E.MAP_ID IN ()
 AND F.XY_KIND = 0
 ORDER BY E.MAP_ID, A.POI_ID
 
--- ÁÖ·Î »ç¿ëÇÏ´Â Äõ¸® // GRS ±âÁØ Áß½ÉÁÂÇ¥ ÃßÃâ , »èÁ¦´ë»óÀº °ËÃâµÇÁö ¾ÊÀ½
+-- ì£¼ë¡œ ì‚¬ìš©í•˜ëŠ” ì¿¼ë¦¬ // GRS ê¸°ì¤€ ì¤‘ì‹¬ì¢Œí‘œ ì¶”ì¶œ , ì‚­ì œëŒ€ìƒì€ ê²€ì¶œë˜ì§€ ì•ŠìŒ
 USE POI_MAIN_PRACT
 
 SELECT E.MAP_ID, A.POI_ID, A.FNAME, A.CNAME, A.SNAME, B.CLASS_CODE, C.CA_NAME, C.CB_NAME, C.CC_NAME, C.CD_NAME, F.COMMENT, F.USER_NAME,
@@ -54,39 +54,40 @@ A.ADDR +' '+ CAST(A.PRIMARY_BUN AS varchar(10)) + '-' + CAST(A.SECONDARY_BUN AS 
 FROM vPOI_I_COMMON_ALL_GRS A, PTC_POI_CLASS B, PTC_CLASS C, PTN_ADDR D, POI_MAIN_ETC..[22y_2150_INDEX_220401] E, PTN_WORK_COMMENT F
 WHERE A.POI_ID = B.POI_ID AND B.CLASS_CODE = C.CLASS_CODE AND A.POI_ID = D.POI_ID AND A.POI_ID = F.POI_ID
 AND LEFT(A.TILE_ID,4) = E.MAP_ID
-AND E.°üÇÒ¾÷Ã¼ = 'Æ¼¾ÆÀÌ·¦'
+AND E.ê´€í• ì—…ì²´ = 'í‹°ì•„ì´ëž©'
 AND A.FNAME LIKE '%%'
 ORDER BY E.MAP_ID, A.POI_ID
 
 SELECT DISTINCT E.MAP_ID, A.POI_ID, A.FNAME, A.CNAME, A.SNAME,
 -- B.CLASS_CODE, C.CA_NAME, C.CB_NAME, C.CC_NAME, C.CD_NAME,
 -- A.ADDR, A.SAN_BUN, A.PRIMARY_BUN, A.SECONDARY_BUN,
-A.ADDR +' '+ CAST(A.PRIMARY_BUN AS varchar(10)) + '-' + CAST(A.SECONDARY_BUN AS varchar(10)) AS ±¸ÁÖ¼Ò,
-F.ADDRESS +' '+ CAST(F.BULD_MNNM AS varchar(10)) + '-' + CAST(F.BULD_SLNO AS varchar(10)) AS »õÁÖ¼Ò,
-A.TELE_A + '-' +  A.TELE_B + '-' +  A.TELE_C AS ÀüÈ­¹øÈ£
+A.ADDR +' '+ CAST(A.PRIMARY_BUN AS varchar(10)) + '-' + CAST(A.SECONDARY_BUN AS varchar(10)) AS êµ¬ì£¼ì†Œ,
+F.ADDRESS +' '+ CAST(F.BULD_MNNM AS varchar(10)) + '-' + CAST(F.BULD_SLNO AS varchar(10)) AS ìƒˆì£¼ì†Œ,
+A.TELE_A + '-' +  A.TELE_B + '-' +  A.TELE_C AS ì „í™”ë²ˆí˜¸
 FROM vPOI_I_COMMON_ALL_GRS A, PTC_POI_CLASS B, PTC_CLASS C, PTN_ADDR D, POI_MAIN_ETC..[22y_2150_INDEX_220401] E, PTN_ROAD_ADDR F
 WHERE A.POI_ID = B.POI_ID
 AND B.CLASS_CODE = C.CLASS_CODE
 AND A.POI_ID = D.POI_ID
 AND LEFT(A.TILE_ID,4) = E.MAP_ID
 AND A.POI_ID = F.POI_ID
-AND E.°üÇÒ¾÷Ã¼ = 'Æ¼¾ÆÀÌ·¦'
+AND E.ê´€í• ì—…ì²´ = 'í‹°ì•„ì´ëž©'
 ORDER BY E.MAP_ID, A.POI_ID
 
-/*Áß½ÉÁÂÇ¥*/
+/*ì¤‘ì‹¬ì¢Œí‘œ*/
 select XY_GRS.STX as grs_x, XY_GRS.STY as grs_y 
 from PTN_POI_XY
-where XY_KIND = 0 and poi_id = 8786624
+where XY_KIND = 0 and poi_id = 
 
 select XY_BESSEL.STX as bes_x, XY_BESSEL.STY  as bes_y 
 from PTN_POI_XY
-where XY_KIND = 0 and poi_id = 8786624
+where XY_KIND = 0 and poi_id = 
 
-/*¾È³»ÁÂÇ¥*/
+/*ì•ˆë‚´ì¢Œí‘œ*/
 select XY_GRS.STX as grs_x, XY_GRS.STY as grs_y 
 from PTN_POI_XY
-where XY_KIND = 1 and poi_id = 8786624
+where XY_KIND = 1 and poi_id = 
 
 select XY_BESSEL.STX as bes_x, XY_BESSEL.STY  as bes_y 
 from PTN_POI_XY
-where XY_KIND = 1 and poi_id = 8786624
+where XY_KIND = 1 and poi_id = 
+
