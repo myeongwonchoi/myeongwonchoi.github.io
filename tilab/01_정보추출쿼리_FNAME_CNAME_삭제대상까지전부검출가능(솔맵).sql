@@ -15,10 +15,7 @@ AND A.POI_ID = D.POI_ID
 AND A.POI_ID = E.POI_ID
 AND E.NAME_SEQ = F.NAME_SEQ
 AND E.NAME_KIND = 0
-AND A.POI_ID IN
-(
-
-)
+AND A.POI_ID IN ( )
 
 -- CNAME 검출 // ERR_CODE 여부와 상관없이 검출 가능
 SELECT A.POI_ID, F.N_NAME AS CNAME, C.CA_NAME, C.CB_NAME, C.CC_NAME, C.CD_NAME, D.ADDRESS, D.SAN, D.JIBUN_M, D.JIBUN_S
@@ -29,10 +26,7 @@ AND A.POI_ID = D.POI_ID
 AND A.POI_ID = E.POI_ID
 AND E.NAME_SEQ = F.NAME_SEQ
 AND E.NAME_KIND = 1
-AND A.POI_ID IN
-(
-
-)
+AND A.POI_ID IN ( )
 
 -- 좌표를 원하는 경우 // GRS 기준 중심좌표 추출 , 삭제대상은 검출되지 않음
 USE POI_MAIN_PRACT
@@ -90,4 +84,3 @@ where XY_KIND = 1 and poi_id =
 select XY_BESSEL.STX as bes_x, XY_BESSEL.STY  as bes_y 
 from PTN_POI_XY
 where XY_KIND = 1 and poi_id = 
-
