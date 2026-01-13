@@ -1,18 +1,16 @@
 /**************************************
-	- Á¦     ¸ñ: °ø»çÁß POI ÃßÃâ Äõ¸®
-	- ÃÖÃÊÀÛ¼ºÀÏ: 2024-04-17
-	- ÃÖÃÊÀÛ¼ºÀÚ: ÃÖ¸í¿ø
+	- ì œ     ëª©: ê³µì‚¬ì¤‘ POI ì¶”ì¶œ ì¿¼ë¦¬
+	- ìµœì´ˆìž‘ì„±ì¼: 2024-04-17
+	- ìµœì´ˆìž‘ì„±ìž: ìµœëª…ì›
 ****************************************/
 
 use POI_MAIN_PRACT
 
-select distinct a.POI_ID, a.UPDATE_DATE, c.CC_NAME, e.N_NAME AS ¸íÄª, g.USER_NAME, h.CONSTRUCT_DATE, h.MEMO, a.err_code
-from PTM_COMMON a, PTC_POI_CLASS b,  PTC_CLASS c, PTD_NAME d, PTN_NAME e, PTN_TELEPHONE f, GTN_USER g, POI_MAIN_ETC..[22y_2150_INDEX_220401] x, PTN_CONSTRUCT h
-where a.POI_ID = b.POI_ID and b.CLASS_CODE = c.CLASS_CODE and a.POI_ID = d.POI_ID and d.NAME_SEQ = e.NAME_SEQ and a.POI_ID = f.POI_ID and a.POI_ID = h.POI_ID and g.USER_SEQ = h.USER_SEQ
-and d.NAME_KIND = 0
-and left(a.TILE_ID,4) = x.MAP_ID
-and x.°üÇÒ¾÷Ã¼= 'Æ¼¾ÆÀÌ·¦'
-and a.err_code not in (4,260,516) -- ¿¡·¯ÄÚµå 4:ER, 260:ER+TE, 516:ER+UC
-order by h.CONSTRUCT_DATE
-
-
+SELECT DISTINCT a.POI_ID, a.UPDATE_DATE, c.CC_NAME, e.N_NAME AS ëª…ì¹­, g.USER_NAME, h.CONSTRUCT_DATE, h.MEMO, a.err_code
+FROM PTM_COMMON a, PTC_POI_CLASS b,  PTC_CLASS c, PTD_NAME d, PTN_NAME e, PTN_TELEPHONE f, GTN_USER g, POI_MAIN_ETC..[22y_2150_INDEX_220401] x, PTN_CONSTRUCT h
+WHERE a.POI_ID = b.POI_ID AND b.CLASS_CODE = c.CLASS_CODE AND a.POI_ID = d.POI_ID AND d.NAME_SEQ = e.NAME_SEQ AND a.POI_ID = f.POI_ID AND a.POI_ID = h.POI_ID AND g.USER_SEQ = h.USER_SEQ
+AND d.NAME_KIND = 0
+AND LEFT(a.TILE_ID,4) = x.MAP_ID
+AND x.ê´€í• ì—…ì²´= 'í‹°ì•„ì´ëž©'
+AND a.err_code NOT IN (4,260,516) -- ì—ëŸ¬ì½”ë“œ 4:ER, 260:ER+TE, 516:ER+UC
+ORDER BY h.CONSTRUCT_DATE
