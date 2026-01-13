@@ -1,60 +1,57 @@
 /***********************************************************************
-	- Á¦     ¸ñ: 25_ÇöÀåÆò°¡ ¸®½ºÆ®¾÷
-	- ÃÖÃÊÀÛ¼ºÀÏ: 2025-09-239
-	- ÃÖÃÊÀÛ¼ºÀÚ: ÃÖ¸í¿ø
-	- ÃÖÁ¾¼öÁ¤ÀÏ: 
-	- ÃÖÁ¾ÀÛ¼ºÀÚ: 
+	- ì œ     ëª©: 25_í˜„ìž¥í‰ê°€ ë¦¬ìŠ¤íŠ¸ì—…
+	- ìµœì´ˆìž‘ì„±ì¼: 2025-09-239
+	- ìµœì´ˆìž‘ì„±ìž: ìµœëª…ì›
+	- ìµœì¢…ìˆ˜ì •ì¼: 
+	- ìµœì¢…ìž‘ì„±ìž: 
 ************************************************************************/
 
 /*
- 1. CORE ´ë»ó ÃßÃâÇØ¼­ ¿¢¼¿ ÆÄÀÏ¿¡ ±âÀÔÇÏ±â
+ 1. CORE ëŒ€ìƒ ì¶”ì¶œí•´ì„œ ì—‘ì…€ íŒŒì¼ì— ê¸°ìž…í•˜ê¸°
 */
 USE POI_MAIN_PRACT
 
 SELECT DISTINCT POI_ID, FNAME, CNAME, CP_ID,
-ADDR +' '+ CAST(PRIMARY_BUN AS varchar(10)) + '-' + CAST(SECONDARY_BUN AS varchar(10)) AS ±¸ÁÖ¼Ò,
-TELE_A + '-' + TELE_B +  '-' +TELE_C AS ÀüÈ­¹øÈ£
+ADDR +' '+ CAST(PRIMARY_BUN AS varchar(10)) + '-' + CAST(SECONDARY_BUN AS varchar(10)) AS êµ¬ì£¼ì†Œ,
+TELE_A + '-' + TELE_B +  '-' +TELE_C AS ì „í™”ë²ˆí˜¸
 FROM vPOI_I_COMMON_ALL_GRS
--- °¡°íÀÚ ÇÏ´Â µ¿ ÀÔ·Â
-WHERE ADDR LIKE '%Ã»´çµ¿'
--- °¡°íÀÚ ÇÏ´Â Áö¹ø ÀÔ·Â
-AND PRIMARY_BUN IN (361,992,299,1001,978,300,1005,127)
--- °¡°íÀÚ ÇÏ´Â ºÎ¹ø ÀÔ·Â
-AND SECONDARY_BUN IN (0,5,13,15,36)
-ORDER BY FNAME, CNAME, ±¸ÁÖ¼Ò
+-- ê°€ê³ ìž í•˜ëŠ” ë™ ìž…ë ¥
+WHERE ADDR LIKE '%'
+-- ê°€ê³ ìž í•˜ëŠ” ì§€ë²ˆ ìž…ë ¥
+AND PRIMARY_BUN IN ()
+-- ê°€ê³ ìž í•˜ëŠ” ë¶€ë²ˆ ìž…ë ¥
+AND SECONDARY_BUN IN ()
+ORDER BY FNAME, CNAME, êµ¬ì£¼ì†Œ
 
 
 /*
- 2. CORE°¡ ¾Æ´Ñ CP ´ë»ó ÃßÃâÇØ¼­ ¿¢¼¿ ÆÄÀÏ¿¡ ±âÀÔÇÏ±â
+ 2. COREê°€ ì•„ë‹Œ CP ëŒ€ìƒ ì¶”ì¶œí•´ì„œ ì—‘ì…€ íŒŒì¼ì— ê¸°ìž…í•˜ê¸°
  */
 SELECT POI_ID, FNAME, CNAME, CP_ID,
-ADDR +' '+ CAST(PRIMARY_BUN AS varchar(10)) + '-' + CAST(SECONDARY_BUN AS varchar(10)) AS ±¸ÁÖ¼Ò,
-TELE_A + '-' + TELE_B +  '-' +TELE_C AS ÀüÈ­¹øÈ£
-FROM CP_MAIN_CONV_OBN_BAK..MID_CP_COMMON_9¿ù2Â÷_20250918
--- °¡°íÀÚ ÇÏ´Â µ¿ ÀÔ·Â
-WHERE ADDR LIKE '%Ã»´çµ¿'
--- °¡°íÀÚ ÇÏ´Â Áö¹ø ÀÔ·Â
-AND PRIMARY_BUN IN (361,992,299,1001,978,300,1005,127)
--- °¡°íÀÚ ÇÏ´Â ºÎ¹ø ÀÔ·Â
-AND SECONDARY_BUN IN (0,5,13,15,36)
+ADDR +' '+ CAST(PRIMARY_BUN AS varchar(10)) + '-' + CAST(SECONDARY_BUN AS varchar(10)) AS êµ¬ì£¼ì†Œ,
+TELE_A + '-' + TELE_B +  '-' +TELE_C AS ì „í™”ë²ˆí˜¸
+FROM CP_MAIN_CONV_OBN_BAK..MID_CP_COMMON_9ì›”2ì°¨_20250918
+-- ê°€ê³ ìž í•˜ëŠ” ë™ ìž…ë ¥
+WHERE ADDR LIKE '%'
+-- ê°€ê³ ìž í•˜ëŠ” ì§€ë²ˆ ìž…ë ¥
+AND PRIMARY_BUN IN ()
+-- ê°€ê³ ìž í•˜ëŠ” ë¶€ë²ˆ ìž…ë ¥
+AND SECONDARY_BUN IN ()
 AND POI_ID NOT IN
 (
--- 1¹ø Äõ¸® º¹ºÙÇÏ±â
+-- 1ë²ˆ ì¿¼ë¦¬ ë³µë¶™í•˜ê¸°
 SELECT DISTINCT POI_ID
 FROM vPOI_I_COMMON_ALL_GRS
-WHERE ADDR LIKE '%Ã»´çµ¿'
-AND PRIMARY_BUN IN (361,992,299,1001,978,300,1005,127)
-AND SECONDARY_BUN IN (0,5,13,15,36)
+WHERE ADDR LIKE '%'
+AND PRIMARY_BUN IN ()
+AND SECONDARY_BUN IN ()
 )
-ORDER BY FNAME, CNAME, ±¸ÁÖ¼Ò
+ORDER BY FNAME, CNAME, êµ¬ì£¼ì†Œ
 
 /*
- 3. ±â»èÁ¦ ´ë»ó Ã£¾Æ³»¼­ ¿¢¼¿ ÆÄÀÏ¿¡¼­ Áö¿ì±â
+ 3. ê¸°ì‚­ì œ ëŒ€ìƒ ì°¾ì•„ë‚´ì„œ ì—‘ì…€ íŒŒì¼ì—ì„œ ì§€ìš°ê¸°
 */
 SELECT POI_ID, ERR_CODE
 FROM PTM_COMMON
-WHERE POI_ID IN
-(
-
-)
+WHERE POI_ID IN ( )
 AND ERR_CODE IN (2, 34, 6, 262, 66, 98, 354, 258, 770, 514, 1, 4, 68, 100, 324, 356, 836, 580, 612, 260, 292, 772, 516)
