@@ -1,34 +1,36 @@
 /***********************************************************************
-	- Á¦     ¸ñ: 18_»ó¼¼È­°ü·Ã
-	- ÃÖÃÊÀÛ¼ºÀÏ: 2025-04-01
-	- ÃÖÃÊÀÛ¼ºÀÚ: ÃÖ¸í¿ø
-	- ÃÖÁ¾¼öÁ¤ÀÏ: 2025-04-09
-	- ÃÖÁ¾ÀÛ¼ºÀÚ: ÃÖ¸í¿ø
+	- ì œ     ëª©: 18_ìƒì„¸í™”ê´€ë ¨
+	- ìµœì´ˆìž‘ì„±ì¼: 2025-04-01
+	- ìµœì´ˆìž‘ì„±ìž: ìµœëª…ì›
+	- ìµœì¢…ìˆ˜ì •ì¼: 2025-04-09
+	- ìµœì¢…ìž‘ì„±ìž: ìµœëª…ì›
 ************************************************************************/
 
 /*
- »ó¼¼Á¾º°_±¸Á¶ÀÏ¹Ý (°£´ÜÇÏ°Ô »ý°¢ÇÏ¸é Á¾º°¼¼ºÐÈ­)
+ ìƒì„¸ì¢…ë³„_êµ¬ì¡°ì¼ë°˜ (ê°„ë‹¨í•˜ê²Œ ìƒê°í•˜ë©´ ì¢…ë³„ì„¸ë¶„í™”)
 */
 SELECT TOP 100 * 
 FROM PTC_FEATURE_GROUP
 
 /*
- »ó¼¼Á¾º°_±¸Á¶»ó¼¼ (°£´ÜÇÏ°Ô »ý°¢ÇÏ¸é ¸Þ´º)
+ ìƒì„¸ì¢…ë³„_êµ¬ì¡°ìƒì„¸ (ê°„ë‹¨í•˜ê²Œ ìƒê°í•˜ë©´ ë©”ë‰´)
 */
 SELECT TOP 100 * 
 FROM PTC_FEATURE_LIST
 
 /*
- »ó¼¼Á¾º°_±¸Á¶»ó¼¼ (¸Þ´ºÀÇ ¼­ºêÀÌ¸§)
+ ìƒì„¸ì¢…ë³„_êµ¬ì¡°ìƒì„¸ (ë©”ë‰´ì˜ ì„œë¸Œì´ë¦„)
 */
 SELECT TOP 100 *
 FROM PTD_SUB_FEATURE_LIST
 
 /*
- POI º° »ó¼¼È­ ÀÛ¾÷ ÇöÈ²
+ POI ë³„ ìƒì„¸í™” ìž‘ì—… í˜„í™©
 */
 SELECT A.POI_ID, B.SUB_FEATURE_NAME, C.USER_NAME, D.UPDATE_DATE
 FROM PTC_POI_SUB_FEATURE_LIST A, PTD_SUB_FEATURE_LIST B, GTN_USER C, vPOI_I_COMMON_ALL_GRS D
-WHERE A.SUB_FEATURE_ID = B.SUB_FEATURE_ID AND A.INSERT_USER = C.USER_SEQ AND A.POI_ID = D.POI_ID
-AND C.USER_NAME IN ('ÀÌÁ¦Èñ','ÃÖ¸í¿ø','¾ç¿¬°æ','°­ÀÎ¾Ö','±èÅÂÁø','ÀÌÇØ¼ö','À±¼º¹Î','Çã¹Î°æ')
+WHERE A.SUB_FEATURE_ID = B.SUB_FEATURE_ID
+AND A.INSERT_USER = C.USER_SEQ
+AND A.POI_ID = D.POI_ID
+AND C.USER_NAME IN ()
 ORDER BY D.UPDATE_DATE, A.POI_ID DESC
