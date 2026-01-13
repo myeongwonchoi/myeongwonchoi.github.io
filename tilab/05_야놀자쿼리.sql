@@ -1,24 +1,25 @@
 /***************************************
-	- Á¦     ¸ñ: ¾ß³îÀÚ°ËÃâÄõ¸®
-	- ÃÖÃÊÀÛ¼ºÀÏ: -
-	- ÃÖÃÊÀÛ¼ºÀÚ: ÃÖº¸¸§°úÀå
-	- Æ¯ÀÌ»çÇ×
-	 -- DB¸í: CP_TILAB_NEW
+	- ì œ     ëª©: ì•¼ë†€ìžê²€ì¶œì¿¼ë¦¬
+	- ìµœì´ˆìž‘ì„±ì¼: -
+	- ìµœì´ˆìž‘ì„±ìž: ìµœë³´ë¦„ê³¼ìž¥
+	- íŠ¹ì´ì‚¬í•­
+	 -- DBëª…: CP_TILAB_NEW
 ****************************************/
 
-use CP_TILAB_NEW
+USE CP_TILAB_NEW
 
---¸ÅÄªµÈ ´ë»ó 18.662°Ç
-select *
-from (
-     select row_number() over(partition by a.POI_ID order by b.LDGS_CD asc) RN, *
-   from [dbo].[¿øµµ_¼÷¹ÚÁ¾º°_231025] as a left join [dbo].[¾ß³îÀÚDATA_9¿ù_¿øµµÀç¸ÅÄª_231025] as b
-   on a.ADDR = b.ÁÖ¼Ò and a.PRIMARY_BUN = b.ÁÖ¹ø and a.SECONDARY_BUN = b.ºÎ¹ø
-   where LDGS_CD is not null) aa
-   where aa.RN = 1 
+--ë§¤ì¹­ëœ ëŒ€ìƒ 18.662ê±´
+SELECT *
+FROM (
+     SELECT row_number() over(partition BY a.POI_ID ORDER BY b.LDGS_CD ASC) RN, *
+   FROM [dbo].[ì›ë„_ìˆ™ë°•ì¢…ë³„_231025] AS a LEFT JOIN [dbo].[ì•¼ë†€ìžDATA_9ì›”_ì›ë„ìž¬ë§¤ì¹­_231025] as b
+   ON a.ADDR = b.ì£¼ì†Œ AND a.PRIMARY_BUN = b.ì£¼ë²ˆ AND a.SECONDARY_BUN = b.ë¶€ë²ˆ
+   WHERE LDGS_CD IS NOT NULL) aa
+   WHERE aa.RN = 1 
 
- --¹Ì¸ÅÄª ´ë»ó(¸ÅÄª °íµµÈ­ ÀÛ¾÷ ÇÊ¿äÇÑ ´ë»ó) 31,542°Ç
-   select *
-   from [dbo].[¿øµµ_¼÷¹ÚÁ¾º°_231025]  a left join [dbo].[¾ß³îÀÚDATA_9¿ù_¿øµµÀç¸ÅÄª_231025] b
-   on a.ADDR = b.ÁÖ¼Ò and a.PRIMARY_BUN = b.ÁÖ¹ø and a.SECONDARY_BUN = b.ºÎ¹ø
-   where LDGS_CD is null  
+ --ë¯¸ë§¤ì¹­ ëŒ€ìƒ(ë§¤ì¹­ ê³ ë„í™” ìž‘ì—… í•„ìš”í•œ ëŒ€ìƒ) 31,542ê±´
+   SELECT *
+   FROM [dbo].[ì›ë„_ìˆ™ë°•ì¢…ë³„_231025]  a LEFT JOIN [dbo].[ì•¼ë†€ìžDATA_9ì›”_ì›ë„ìž¬ë§¤ì¹­_231025] b
+   ON a.ADDR = b.ì£¼ì†Œ AND a.PRIMARY_BUN = b.ì£¼ë²ˆ AND a.SECONDARY_BUN = b.ë¶€ë²ˆ
+
+   where LDGS_CD IS NULL  
