@@ -6,10 +6,9 @@
 	- 최종작성자: 최명원
 ****************************************/
 
-/*  데일리로 추출하는 경우 */
+/* 데일리로 추출하는 경우 */
 
 USE SOLEMAP;
-GO
 
 SELECT *, CONCAT(ADDRESS, ' ', JIBUN_M, '-', JIBUN_S) AS [주소]
  -- YYYYMMDD 날짜만 변경해서 추출 ex) 20250807
@@ -22,7 +21,6 @@ ORDER BY ADDRESS, JIBUN_M, JIBUN_S;
 /*  주말 및 공휴일이 포함되어 여러 날짜를 한번에 추출하는 경우 */
 
 USE SOLEMAP;
-GO
 
 -- 중복 제거가 필요한 경우 UNION 유지, 속도가 중요하다면 UNION ALL 권장
 SELECT * FROM (
