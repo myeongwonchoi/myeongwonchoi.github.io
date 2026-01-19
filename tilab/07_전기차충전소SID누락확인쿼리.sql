@@ -1,12 +1,12 @@
 /***************************************
 	- 제     목: 전기차충전소 SID 누락 데이터 검출 (SID = 충전소ID)
 	- 최초작성일: 2024-05-07
-	- 최초작성자: 양연경주임
+	- 최초작성자: 최명원
 	- 최종수정일: 2024-05-08
 	- 최종작성자: 최명원
 ****************************************/
 
-USE POI_MAIN_PRACT
+USE POI_MAIN_PRACT;
 
 SELECT A.POI_ID, A.SID, B.PNAME,  D.USER_NAME, A.INSERT_DATE, A.UPDATE_DATE, C.관할업체, C.대권역, C.시도, C.시군구
 FROM PTN_EV AS A JOIN PTM_COMMON AS B
@@ -19,7 +19,7 @@ WHERE C.관할업체 = '티아이랩'
 AND A.SID IS NULL
 AND B.ERR_CODE NOT IN (1,2,4,34)
 AND D.USER_NAME IN ()
-ORDER BY A.INSERT_DATE DESC
+ORDER BY A.INSERT_DATE DESC;
 
 SELECT A.POI_ID, A.SID, B.PNAME, D.USER_NAME, A.INSERT_DATE, A.UPDATE_DATE, C.관할업체, C.대권역, C.시도, C.시군구
 FROM PTN_EV_ACCESS AS A JOIN PTM_COMMON AS B
@@ -32,4 +32,4 @@ WHERE C.관할업체 = '티아이랩'
 AND A.SID IS NULL
 AND B.ERR_CODE NOT IN (1,2,4,34)
 AND D.USER_NAME IN ()
-ORDER BY A.INSERT_DATE DESC 
+ORDER BY A.INSERT_DATE DESC;
