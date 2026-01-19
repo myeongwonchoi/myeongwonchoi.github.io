@@ -1,52 +1,48 @@
 /***************************************
-	- Á¦     ¸ñ: SolMap ÀÛ¾÷ ´ë»ó °ËÃâ Äõ¸®
-	- ÃÖÃÊÀÛ¼ºÀÏ: 2025-08-07
-	- ÃÖÃÊÀÛ¼ºÀÚ: ÃÖ¸í¿ø
-	- ÃÖÁ¾¼öÁ¤ÀÏ: 2026-01-13
-	- ÃÖÁ¾ÀÛ¼ºÀÚ: ÃÖ¸í¿ø
+	- ì œ     ëª©: SolMap ìž‘ì—… ëŒ€ìƒ ê²€ì¶œ ì¿¼ë¦¬
+	- ìµœì´ˆìž‘ì„±ì¼: 2025-08-07
+	- ìµœì´ˆìž‘ì„±ìž: ìµœëª…ì›
+	- ìµœì¢…ìˆ˜ì •ì¼: 2026-01-13
+	- ìµœì¢…ìž‘ì„±ìž: ìµœëª…ì›
 ****************************************/
 
-/*
- µ¥ÀÏ¸®·Î ÃßÃâÇÏ´Â °æ¿ì
-*/
+/*  ë°ì¼ë¦¬ë¡œ ì¶”ì¶œí•˜ëŠ” ê²½ìš° */
 
-USE SOLEMAP
+USE SOLEMAP;
+GO
 
-SELECT *, ADDRESS +' '+ CAST(JIBUN_M AS varchar(10)) + '-' + CAST(JIBUN_S AS varchar(10)) AS ÁÖ¼Ò
- -- YYYYMMDD ³¯Â¥¸¸ º¯°æÇØ¼­ ÃßÃâ ex) 20250807
-FROM LINK_POI_REL_20260112
-WHERE °üÇÒ¾÷Ã¼ = 'Æ¼¾ÆÀÌ·¦'
--- »èÁ¦ POI´Â °ËÃâ ´ë»ó Á¦¿Ü
-AND ERR_CODE NOT IN (1,4,6,68,70,100,260,262,292,324,356,516,580,612,772,836,868)
-ORDER BY ADDRESS, JIBUN_M, JIBUN_S
+SELECT *, CONCAT(ADDRESS, ' ', JIBUN_M, '-', JIBUN_S) AS [ì£¼ì†Œ]
+ -- YYYYMMDD ë‚ ì§œë§Œ ë³€ê²½í•´ì„œ ì¶”ì¶œ ex) 20250807
+FROM LINK_POI_REL_20260112 WITH (NOLOCK)
+WHERE ê´€í• ì—…ì²´ = 'í‹°ì•„ì´ëž©'
+-- ì‚­ì œ POIëŠ” ê²€ì¶œ ëŒ€ìƒ ì œì™¸
+AND ERR_CODE NOT IN (1, 4, 6, 68, 70, 100, 260, 262, 292, 324, 356, 516, 580, 612, 772, 836, 868)
+ORDER BY ADDRESS, JIBUN_M, JIBUN_S;
 
-/*
- ÁÖ¸» ¹× °øÈÞÀÏÀÌ Æ÷ÇÔµÇ¾î ¿©·¯ ³¯Â¥¸¦ ÇÑ¹ø¿¡ ÃßÃâÇÏ´Â °æ¿ì
-*/
+/*  ì£¼ë§ ë° ê³µíœ´ì¼ì´ í¬í•¨ë˜ì–´ ì—¬ëŸ¬ ë‚ ì§œë¥¼ í•œë²ˆì— ì¶”ì¶œí•˜ëŠ” ê²½ìš° */
 
-USE SOLEMAP
+USE SOLEMAP;
+GO
 
-SELECT *, ADDRESS +' '+ CAST(JIBUN_M AS varchar(10)) + '-' + CAST(JIBUN_S AS varchar(10)) AS ÁÖ¼Ò
- -- YYYYMMDD ³¯Â¥¸¸ º¯°æÇØ¼­ ÃßÃâ ex) 20250808
-FROM LINK_POI_REL_YYYYMMDD
-WHERE °üÇÒ¾÷Ã¼ = 'Æ¼¾ÆÀÌ·¦'
-AND ERR_CODE NOT IN (1,4,6,68,70,100,260,262,292,324,356,516,580,612,772,836,868)
+-- ì¤‘ë³µ ì œê±°ê°€ í•„ìš”í•œ ê²½ìš° UNION ìœ ì§€, ì†ë„ê°€ ì¤‘ìš”í•˜ë‹¤ë©´ UNION ALL ê¶Œìž¥
+SELECT * FROM (
+    SELECT *, CONCAT(ADDRESS, ' ', JIBUN_M, '-', JIBUN_S) AS [ì£¼ì†Œ]
+    FROM LINK_POI_REL_20260117 WITH (NOLOCK) -- ë‚ ì§œ 1
+    WHERE ê´€í• ì—…ì²´ = 'í‹°ì•„ì´ëž©'
+      AND ERR_CODE NOT IN (1, 4, 6, 68, 70, 100, 260, 262, 292, 324, 356, 516, 580, 612, 772, 836, 868)
 
--- Å×ÀÌºí °£ÀÇ Áßº¹ µ¥ÀÌÅÍ´Â °ËÃâµÇÁö ¾Êµµ·Ï UNION »ç¿ë // Áßº¹ °ËÃâ ÇÊ¿äÇÑ °æ¿ì "UNION ALL" ·Î º¯°æ
-UNION 
+    UNION 
 
-SELECT *, ADDRESS +' '+ CAST(JIBUN_M AS varchar(10)) + '-' + CAST(JIBUN_S AS varchar(10)) AS ÁÖ¼Ò
- -- YYYYMMDD ³¯Â¥¸¸ º¯°æÇØ¼­ ÃßÃâ // À§ÀÇ ³¯Â¥¿Í »óÀÌÇÏ¿©¾ßÇÔ ex) 20250809
-FROM LINK_POI_REL_YYYYMMDD
-WHERE °üÇÒ¾÷Ã¼ = 'Æ¼¾ÆÀÌ·¦'
-AND ERR_CODE NOT IN (1,4,6,68,70,100,260,262,292,324,356,516,580,612,772,836,868)
+    SELECT *, CONCAT(ADDRESS, ' ', JIBUN_M, '-', JIBUN_S) AS [ì£¼ì†Œ] 
+    FROM LINK_POI_REL_20260118 WITH (NOLOCK) -- ë‚ ì§œ 2
+    WHERE ê´€í• ì—…ì²´ = 'í‹°ì•„ì´ëž©'
+      AND ERR_CODE NOT IN (1, 4, 6, 68, 70, 100, 260, 262, 292, 324, 356, 516, 580, 612, 772, 836, 868)
 
--- Å×ÀÌºí °£ÀÇ Áßº¹ µ¥ÀÌÅÍ´Â °ËÃâµÇÁö ¾Êµµ·Ï UNION »ç¿ë // Áßº¹ °ËÃâ ÇÊ¿äÇÑ °æ¿ì "UNION ALL" ·Î º¯°æ
-UNION 
+    UNION 
 
-SELECT *, ADDRESS +' '+ CAST(JIBUN_M AS varchar(10)) + '-' + CAST(JIBUN_S AS varchar(10)) AS ÁÖ¼Ò
- -- YYYYMMDD ³¯Â¥¸¸ º¯°æÇØ¼­ ÃßÃâ // À§ÀÇ ³¯Â¥¿Í »óÀÌÇÏ¿©¾ßÇÔ ex) 20250810
-FROM LINK_POI_REL_YYYYMMDD
-WHERE °üÇÒ¾÷Ã¼ = 'Æ¼¾ÆÀÌ·¦'
-AND ERR_CODE NOT IN (1,4,6,68,70,100,260,262,292,324,356,516,580,612,772,836,868)
-ORDER BY ADDRESS, JIBUN_M, JIBUN_S
+    SELECT *, CONCAT(ADDRESS, ' ', JIBUN_M, '-', JIBUN_S) AS [ì£¼ì†Œ]  
+    FROM LINK_POI_REL_20260119 WITH (NOLOCK) -- ë‚ ì§œ 3
+    WHERE ê´€í• ì—…ì²´ = 'í‹°ì•„ì´ëž©'
+      AND ERR_CODE NOT IN (1, 4, 6, 68, 70, 100, 260, 262, 292, 324, 356, 516, 580, 612, 772, 836, 868)
+) AS Unified_POI
+ORDER BY ADDRESS, JIBUN_M, JIBUN_S;
